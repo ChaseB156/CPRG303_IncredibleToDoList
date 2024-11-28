@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 
-export default function ToDoForm() {
+function ToDoForm({ addTask }) {
+  const [taskText, setTaskText] = useState('');
+
   return (
     <View style={styles.form}>
-      <TextInput style={styles.input} placeholder="Add a new task..." />
-      <Button title="Add" />
+      <TextInput
+        style={styles.input}
+        placeholder="Add a new task..."
+        onChangeText={(text) => setTaskText(text)}
+        value={taskText}
+      />
+      <Button
+        title="Add Task"
+        onPress={() => {
+          if (taskText.trim()) { // Check if input is not empty
+            addTask(taskText);
+            setTaskText(''); // Clear the input field
+          }
+        }}
+      />
     </View>
   );
 }
@@ -27,3 +42,5 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 });
+
+export default ToDoForm;
