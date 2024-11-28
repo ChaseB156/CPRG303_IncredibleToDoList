@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 
-export default function ToDoList({ tasks }) {
+function ToDoList({ tasks }) {
   return (
     <ScrollView>
       {tasks.map((task, index) => (
@@ -17,10 +17,13 @@ const styles = StyleSheet.create({
   task: {
     padding: 10,
     borderBottomWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#8B4513',
+    backgroundColor: '#004d00',
   },
   taskText: {
     fontSize: 16,
-    color: '#000', // Styling tasks as incomplete
+    color: '#ffffff',
   },
 });
+
+export default ToDoList;
